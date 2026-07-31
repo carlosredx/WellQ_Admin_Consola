@@ -61,28 +61,35 @@ export const apiFetch = async (path, options = {}) => {
     }
 
     if (res.status === 403) {
-      Swal.fire({
-        icon:                'error',
-        title:               'Acceso denegado',
-        text:                detail || "Se requiere el rol 'super_admin' para esta operación.",
-        confirmButtonColor:  '#0D9488',
-        confirmButtonText:   'Entendido',
-      });
+      if (!options.silent) {
+        Swal.fire({
+          icon:                'error',
+          title:               'Acceso denegado',
+          text:                detail || "Se requiere el rol 'super_admin' para esta operación.",
+          confirmButtonColor:  '#0D9488',
+          confirmButtonText:   'Entendido',
+        });
+      }
       const err = new Error(detail || 'Forbidden');
       err.status = 403;
       throw err;
     }
 
     if (res.status === 401) {
-      Swal.fire({
-        icon:               'warning',
-        title:              'Sesión expirada',
-        text:               'Tu sesión ha expirado. Por favor, vuelve a iniciar sesión.',
-        confirmButtonColor: '#0D9488',
-      }).then(() => {
-        clearTokens();                   // ✅ borra wellq_access_token, wellq_refresh_token y wellq_user
+      if (!options.silent) {
+        Swal.fire({
+          icon:               'warning',
+          title:              'Sesión expirada',
+          text:               'Tu sesión ha expirado. Por favor, vuelve a iniciar sesión.',
+          confirmButtonColor: '#0D9488',
+        }).then(() => {
+          clearTokens();                   // ✅ borra wellq_access_token, wellq_refresh_token y wellq_user
+          window.location.href = '/login';
+        });
+      } else {
+        clearTokens();
         window.location.href = '/login';
-      });
+      }
       const err = new Error('Unauthorized');
       err.status = 401;
       throw err;
