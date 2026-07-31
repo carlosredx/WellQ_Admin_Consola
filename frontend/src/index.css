@@ -94,3 +94,13 @@ body {
 .dark .notification-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(22, 248, 249, 0.46);
 }
+
+/* Responsive tables on mobile */
+@media (max-width: 1024px) {
+  table {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    width: 100% !important;
+  }
+}

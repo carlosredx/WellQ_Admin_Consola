@@ -4,7 +4,7 @@ import {
   Settings, Server, Package, Bell, Search, ChevronDown,
   Activity, RefreshCw, PanelLeftClose, PanelLeftOpen,
   Trash2, X, Megaphone, Mail, Smartphone, CheckCircle, Clock,
-  LogOut, Moon, Sun, LifeBuoy, ShieldOff,
+  LogOut, Moon, Sun, LifeBuoy, ShieldOff, Menu,
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -378,16 +378,24 @@ const Sidebar = ({
   unreadAlerts, profileOpen, setProfileOpen,
   currentUser, theme, toggleTheme, handleLogout,
   tooltip, setTooltip, canViewSettings,
-  openTicketCount = 0, // ← CORRECCIÓN: badge de tickets abiertos igual que Overview
+  openTicketCount = 0, isMobile, mobileMenuOpen, setMobileMenuOpen,
 }) => {
   const { t } = useLanguage();
 
   return (
+    <>
+    {isMobile && mobileMenuOpen && (
+      <div 
+        className="fixed inset-0 bg-black/60 z-[999] backdrop-blur-sm"
+        onClick={() => setMobileMenuOpen(false)}
+      />
+    )}
     <aside
+    className={isMobile ? 'fixed inset-y-0 left-0 z-[1000]' : ''}
     style={{
       width:         `${visibleW}px`,
       transition:    'width 300ms cubic-bezier(0.4,0,0.2,1)',
-      zIndex:        50,
+      zIndex: isMobile ? 1000 : 50,
       display:       'flex',
       flexDirection: 'column',
       background:    'linear-gradient(180deg, #0f1c2e 0%, #0b1420 60%, #0a1118 100%)',
@@ -744,6 +752,7 @@ const Sidebar = ({
       </div>
     )}
     </aside>
+    </>
   );
 };
 
@@ -752,7 +761,8 @@ const Topbar = ({
   view, dateRange, setDateRange, searchQuery, setSearchQuery,
   refreshing, unreadAlerts, bellOpen, setBellOpen,
   profileOpen, setProfileOpen, fetchAll, currentUser,
-  theme, toggleTheme, setView, handleLogout, t, canViewSettings
+  theme, toggleTheme, setView, handleLogout, t, canViewSettings,
+isMobile, setMobileMenuOpen
 }) => {
   const showDateRange = VIEWS_WITH_DATERANGE.includes(view);
   const meta = VIEW_META[view] ?? VIEW_META.overview;
@@ -772,6 +782,11 @@ const Topbar = ({
       <div className="flex items-center justify-between px-8 h-full gap-4">
 
         <div key={view} className="flex items-center gap-4 min-w-0 anim-topbar">
+          {isMobile && (
+            <button onClick={() => setMobileMenuOpen(true)} className="p-1 text-white hover:bg-white/10 rounded-lg flex-shrink-0">
+              <Menu size={24} />
+            </button>
+          )}
           <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${meta.gradient} flex items-center justify-center shadow-lg shadow-[#16f8f9]/20 flex-shrink-0`}>
             <ViewIcon size={20} className="text-black" strokeWidth={2.5} />
           </div>
@@ -891,6 +906,14 @@ const Topbar = ({
 
 // ── App ──────────────────────────────────────────────────────────────────────
 export default function App() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const [isAuthenticated, setIsAuthenticated] = useState(
     !!localStorage.getItem("wellq_access_token")
   );
@@ -1297,6 +1320,9 @@ export default function App() {
       `}</style>
 
       <Sidebar
+        isMobile={isMobile}
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
         open={open}
         setOpen={setOpen}
         view={view}
