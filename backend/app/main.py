@@ -64,8 +64,8 @@ async def lifespan(app: FastAPI):
 
     if settings.database_url:
         init_neon()
-        await create_db_tables()
-        logger.info("Neon (PostgreSQL) conectado y tablas verificadas.")
+        # await create_db_tables() # Desactivado para optimizar el arranque en producción
+        logger.info("Neon (PostgreSQL) conectado.")
     else:
         logger.warning("DATABASE_URL no configurada — Neon desactivado.")
 
