@@ -858,7 +858,7 @@ export const ClinicDrawer = ({
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: '100%', opacity: 0 }}
         transition={{ type: 'spring', damping: 30, stiffness: 250 }}
-        className="fixed inset-y-0 right-0 w-[440px] bg-white dark:bg-wellq-dark shadow-2xl z-[10000] border-l border-wellq-gray/10 dark:border-white/5 flex flex-col font-sans"
+        className="fixed inset-y-0 right-0 w-full max-w-[440px] bg-white dark:bg-wellq-dark shadow-2xl z-[10000] border-l border-wellq-gray/10 dark:border-white/5 flex flex-col font-sans"
       >
         {/* ── Header Principal ─────────────────────────────────────────────────── */}
         <div className="flex-none px-6 pt-6 pb-0 border-b border-wellq-gray/10 dark:border-white/5 relative overflow-hidden">
@@ -899,7 +899,7 @@ export const ClinicDrawer = ({
           </div>
 
           {/* Tabs de Navegación — Settings e Invoices ocultos para roles de solo lectura */}
-          <div className="flex items-center gap-7">
+          <div className="flex items-center gap-4 sm:gap-7 overflow-x-auto hide-scrollbar">
             <TabBtn active={activeTab === 'overview'}  onClick={() => setActiveTab('overview')}  label="Overview" />
             {canEdit && (
               <>

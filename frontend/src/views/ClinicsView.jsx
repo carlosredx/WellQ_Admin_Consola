@@ -1189,7 +1189,7 @@ export const ClinicsView = ({ apiClinics, clinicsLoading, onImpersonate, onRefre
                     animate={{ opacity: 1, y: 0,  scale: 1    }}
                     exit={{   opacity: 0, y: -6, scale: 0.97 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute right-0 top-full mt-2 z-50 w-64 bg-white dark:bg-wellq-dark rounded-2xl shadow-2xl border border-wellq-gray/15 dark:border-wellq-gray/20 p-4 space-y-4"
+                    className="absolute left-0 xl:left-auto xl:right-0 top-full mt-2 z-50 w-64 bg-white dark:bg-wellq-dark rounded-2xl shadow-2xl border border-wellq-gray/15 dark:border-wellq-gray/20 p-4 space-y-4"
                   >
                     <div>
                       <label className="block text-xs font-bold text-wellq-gray uppercase tracking-wider mb-1.5">Tier</label>

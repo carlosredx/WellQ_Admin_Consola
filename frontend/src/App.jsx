@@ -174,7 +174,7 @@ const NotificationPanel = ({ onClose }) => {
   return (
     <div
       ref={panelRef}
-      className="absolute right-0 top-full mt-2 w-[calc(100vw-2rem)] sm:w-96 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-slate-100 dark:border-gray-700 z-50 overflow-hidden"
+      className="fixed left-4 right-4 top-[72px] sm:absolute sm:top-full sm:left-auto sm:right-0 sm:mt-2 sm:w-96 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-slate-100 dark:border-gray-700 z-50 overflow-hidden"
       style={{ maxHeight: '520px', display: 'flex', flexDirection: 'column', animation: 'fadeSlideDown 220ms cubic-bezier(0.22,1,0.36,1) both' }}
     >
       <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 dark:border-gray-700">
