@@ -1440,6 +1440,7 @@ export const PlansView = ({ searchQuery = '' }) => {
             )}
           </button>
         ))}
+        </div>
       </div>
 
       {/* Tab content */}

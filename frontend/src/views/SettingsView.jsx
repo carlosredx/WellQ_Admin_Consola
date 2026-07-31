@@ -671,6 +671,7 @@ export const SettingsView = ({
                 {tab.label}
               </button>
             ))}
+            </div>
           </div>
 
           {/* Sub-tab content */}
