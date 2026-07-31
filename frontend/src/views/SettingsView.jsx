@@ -653,7 +653,8 @@ export const SettingsView = ({
           </div>
 
           {/* Sub-tabs — mismo estilo que los tabs principales */}
-          <div className="flex gap-1.5 bg-wellq-gray/5 dark:bg-white/[0.03] p-1.5 rounded-xl mb-6 border border-wellq-gray/10 dark:border-white/5 shadow-inner w-fit">
+          <div className="w-full overflow-x-auto pb-2 -mb-2">
+            <div className="flex gap-1.5 bg-wellq-gray/5 dark:bg-white/[0.03] p-1.5 rounded-xl mb-6 border border-wellq-gray/10 dark:border-white/5 shadow-inner w-max min-w-min">
             {[
               ...((canManageSettings || canManageRoles) ? [{ id: 'roles', label: t('settings.rolesAndPermissions') }] : []),
               ...((canManageSettings || canManageUsers) ? [{ id: 'users', label: t('settings.users') }] : []),
@@ -1345,7 +1346,8 @@ export const SettingsView = ({
   return (
     <div className="space-y-6 font-sans overflow-x-hidden" style={{ scrollbarGutter: 'stable' }}>
       {/* Tabs principales */}
-      <div className="flex gap-1.5 bg-wellq-gray/5 dark:bg-white/[0.03] p-1.5 rounded-xl self-start inline-flex border border-wellq-gray/10 dark:border-white/5 shadow-inner">
+      <div className="w-full overflow-x-auto pb-2 -mb-2">
+        <div className="flex gap-1.5 bg-wellq-gray/5 dark:bg-white/[0.03] p-1.5 rounded-xl self-start inline-flex border border-wellq-gray/10 dark:border-white/5 shadow-inner w-max min-w-min">
         {settingsTabs.map((tab) => (
           <button
             key={tab.id}
@@ -1359,6 +1361,7 @@ export const SettingsView = ({
             {tab.label}
           </button>
         ))}
+        </div>
       </div>
 
       <AnimatePresence mode="wait">

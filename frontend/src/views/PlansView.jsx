@@ -1409,11 +1409,12 @@ export const PlansView = ({ searchQuery = '' }) => {
   return (
     <div className="space-y-6 font-sans" style={{ minHeight: '85vh' }}>
       {/* Tab navigation */}
-      <div className="flex items-center gap-1.5 p-1.5 bg-wellq-gray/5 dark:bg-white/[0.03] border border-wellq-gray/10 dark:border-white/5 shadow-inner rounded-xl w-fit">
-        {[
-          { id: 'library',    label: t('plans.library'),  icon: Layers },
-          { id: 'builder',    label: t('plans.builder'),  icon: Box    },
-          { id: 'catalog',    label: t('plans.catalog'),  icon: Tag    },
+      <div className="w-full overflow-x-auto pb-2 -mb-2">
+        <div className="flex items-center gap-1.5 p-1.5 bg-wellq-gray/5 dark:bg-white/[0.03] border border-wellq-gray/10 dark:border-white/5 shadow-inner rounded-xl w-max min-w-min">
+          {[
+            { id: 'library',    label: t('plans.library'),  icon: Layers },
+            { id: 'builder',    label: t('plans.builder'),  icon: Box    },
+            { id: 'catalog',    label: t('plans.catalog'),  icon: Tag    },
           { id: 'archivados', label: t('plans.archived'), icon: Archive },
         ].filter(({ id }) => canManagePlans || id === 'library').map(({ id, label, icon: Icon }) => (
           <button

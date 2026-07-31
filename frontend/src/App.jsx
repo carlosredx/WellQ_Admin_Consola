@@ -799,13 +799,11 @@ isMobile, setMobileMenuOpen
           <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br ${meta.gradient} flex items-center justify-center shadow-lg shadow-[#16f8f9]/20 flex-shrink-0`}>
             <ViewIcon size={isMobile ? 16 : 20} className="text-black" strokeWidth={2.5} />
           </div>
-          {!isMobile && (
-            <div className="min-w-0">
-              <h1 className="text-1xl font-bold text-white truncate">
-                {t(`sidebar.${view}`)}
-              </h1>
-            </div>
-          )}
+          <div className="min-w-0 flex-1">
+            <h1 className="text-base sm:text-xl font-bold text-white truncate max-w-[100px] sm:max-w-none">
+              {t(`sidebar.${view}`)}
+            </h1>
+          </div>
         </div>
 
         <div className="flex items-center gap-1 sm:gap-3">

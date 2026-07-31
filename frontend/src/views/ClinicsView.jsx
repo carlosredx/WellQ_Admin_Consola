@@ -1114,8 +1114,9 @@ export const ClinicsView = ({ apiClinics, clinicsLoading, onImpersonate, onRefre
       </motion.div>
 
       <motion.div variants={itemVariants}>
-        <div className="flex items-center justify-between mb-5">
-          <div className="flex items-center gap-1 p-1 bg-wellq-gray/10 dark:bg-white/5 rounded-xl">
+        <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between mb-5 gap-4">
+          <div className="w-full overflow-x-auto pb-2 -mb-2">
+            <div className="flex items-center gap-1 p-1 bg-wellq-gray/10 dark:bg-white/5 rounded-xl w-max min-w-min">
             {[
               { key: 'all',     label: t('clinics.all') },
               { key: 'active',  label: t('clinics.active') },
@@ -1139,9 +1140,10 @@ export const ClinicsView = ({ apiClinics, clinicsLoading, onImpersonate, onRefre
                 {label}
               </button>
             ))}
+            </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center flex-wrap gap-2">
             {/* 🔥 REGLA DE RBAC: Ocultamos el botón de exportación si no es editor */}
             {canEdit && (
               <button
