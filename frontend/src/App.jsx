@@ -1099,16 +1099,18 @@ export default function App() {
   }, [isAuthenticated]);
 
   useEffect(() => {
-    fetchAll(dateRange);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    if (!loading) {
+    if (isAuthenticated) {
       fetchAll(dateRange);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dateRange]);
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (!loading && isAuthenticated) {
+      fetchAll(dateRange);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dateRange, isAuthenticated]);
 
   const handleImpersonate = async (clinic, data) => {
     if (data?.success) {
