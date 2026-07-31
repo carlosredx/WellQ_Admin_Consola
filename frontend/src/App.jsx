@@ -393,13 +393,13 @@ const Sidebar = ({
     <aside
     className={isMobile ? 'fixed inset-y-0 left-0 z-[1000]' : ''}
     style={{
-      width:         `${visibleW}px`,
+      width:         isMobile ? (mobileMenuOpen ? '256px' : '0px') : `${visibleW}px`,
       transition:    'width 300ms cubic-bezier(0.4,0,0.2,1)',
       zIndex: isMobile ? 1000 : 50,
       display:       'flex',
       flexDirection: 'column',
       background:    'linear-gradient(180deg, #0f1c2e 0%, #0b1420 60%, #0a1118 100%)',
-      borderRight:   '1px solid rgba(22,248,249,0.06)',
+      borderRight:   isMobile && !mobileMenuOpen ? 'none' : '1px solid rgba(22,248,249,0.06)',
       flexShrink:    0,
       willChange:    'width',
       overflow:      'hidden',
