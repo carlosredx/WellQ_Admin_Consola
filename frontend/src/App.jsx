@@ -779,9 +779,9 @@ isMobile, setMobileMenuOpen
 
   return (
     <header className="h-[72px] bg-[#0f1c2e] border-b border-[rgba(22,248,249,0.06)] z-40 flex-shrink-0">
-      <div className="flex items-center justify-between px-8 h-full gap-4">
+      <div className="flex items-center justify-between px-4 sm:px-8 h-full gap-2 sm:gap-4">
 
-        <div key={view} className="flex items-center gap-4 min-w-0 anim-topbar">
+        <div key={view} className="flex items-center gap-2 sm:gap-4 min-w-0 anim-topbar">
           {isMobile && (
             <button onClick={() => setMobileMenuOpen(true)} className="p-1 text-white hover:bg-white/10 rounded-lg flex-shrink-0">
               <Menu size={24} />
@@ -797,7 +797,7 @@ isMobile, setMobileMenuOpen
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1 sm:gap-3">
           {showDateRange && (
             <div
               className="hidden lg:flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-2 py-1 shadow-inner"
@@ -833,7 +833,7 @@ isMobile, setMobileMenuOpen
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Escape') setSearchQuery(''); }}
               placeholder={searchPlaceholder}
-              className="pl-9 pr-9 py-2 bg-[#1e293b] rounded-lg text-sm w-56 focus:outline-none focus:ring-2 focus:ring-[#16f8f9]/50 focus:bg-[#0f172a] transition-all text-white placeholder:text-[#94a3b8]/60 border border-[#1e293b] focus:border-[#16f8f9]/30"
+              className="pl-9 pr-9 py-2 bg-[#1e293b] rounded-lg text-sm w-32 sm:w-40 md:w-56 focus:outline-none focus:ring-2 focus:ring-[#16f8f9]/50 focus:bg-[#0f172a] transition-all text-white placeholder:text-[#94a3b8]/60 border border-[#1e293b] focus:border-[#16f8f9]/30"
             />
             {searchQuery && (
               <button
