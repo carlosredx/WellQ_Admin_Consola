@@ -97,7 +97,6 @@ body {
 
 /* ══════════════════════════════════════════════════════════════════════
    RESPONSIVE MOBILE OVERRIDES — WellQ Admin Console
-   Applies to screens < 1024px (tablets and phones)
    ══════════════════════════════════════════════════════════════════════ */
 
 /* Tables: horizontal scroll instead of breaking layout */
@@ -110,24 +109,9 @@ body {
   }
 }
 
-/* Small phones: tighter spacing and smaller fonts */
+/* Small phones: prevent input/modal overflow */
 @media (max-width: 640px) {
-  /* Buttons in toolbars: allow wrapping */
-  .flex { flex-wrap: wrap; }
-  /* But NOT the topbar or sidebar internals */
-  header .flex,
-  aside .flex,
-  nav .flex,
-  .no-wrap { flex-wrap: nowrap !important; }
-
-  /* Cards and containers: prevent overflow */
-  [class*="rounded-2xl"],
-  [class*="rounded-xl"] {
-    overflow: hidden;
-    word-break: break-word;
-  }
-
-  /* Fix fixed-width inputs */
+  /* Inputs must not exceed screen width */
   input[type="text"],
   input[type="number"],
   input[type="email"],
@@ -135,11 +119,7 @@ body {
   textarea,
   select {
     max-width: 100% !important;
-  }
-
-  /* Modal/dropdown panels: fit screen */
-  [class*="absolute"][class*="w-96"],
-  [class*="absolute"][class*="w-80"] {
-    max-width: calc(100vw - 1rem) !important;
+    box-sizing: border-box !important;
   }
 }
+
