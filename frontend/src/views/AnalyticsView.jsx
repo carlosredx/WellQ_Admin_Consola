@@ -127,7 +127,7 @@ export const AnalyticsView = ({
       animate="show"
     >
       {/* ─── App Usage + SOAP Quality ─── */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
         
         {/* Tarjetas de Uso de Aplicaciones */}
         {showAppUsage && (
@@ -288,7 +288,7 @@ export const AnalyticsView = ({
       )}
 
       {/* Adherence + Cohorts ─── */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
         
         {/* Gráfico de Adherencia Semanal */}
         {showAdherence && (

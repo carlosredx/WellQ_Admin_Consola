@@ -95,12 +95,51 @@ body {
   background: rgba(22, 248, 249, 0.46);
 }
 
-/* Responsive tables on mobile */
+/* ══════════════════════════════════════════════════════════════════════
+   RESPONSIVE MOBILE OVERRIDES — WellQ Admin Console
+   Applies to screens < 1024px (tablets and phones)
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* Tables: horizontal scroll instead of breaking layout */
 @media (max-width: 1024px) {
   table {
     display: block !important;
     overflow-x: auto !important;
     white-space: nowrap !important;
     width: 100% !important;
+  }
+}
+
+/* Small phones: tighter spacing and smaller fonts */
+@media (max-width: 640px) {
+  /* Buttons in toolbars: allow wrapping */
+  .flex { flex-wrap: wrap; }
+  /* But NOT the topbar or sidebar internals */
+  header .flex,
+  aside .flex,
+  nav .flex,
+  .no-wrap { flex-wrap: nowrap !important; }
+
+  /* Cards and containers: prevent overflow */
+  [class*="rounded-2xl"],
+  [class*="rounded-xl"] {
+    overflow: hidden;
+    word-break: break-word;
+  }
+
+  /* Fix fixed-width inputs */
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="search"],
+  textarea,
+  select {
+    max-width: 100% !important;
+  }
+
+  /* Modal/dropdown panels: fit screen */
+  [class*="absolute"][class*="w-96"],
+  [class*="absolute"][class*="w-80"] {
+    max-width: calc(100vw - 1rem) !important;
   }
 }

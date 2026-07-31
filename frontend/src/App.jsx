@@ -174,7 +174,7 @@ const NotificationPanel = ({ onClose }) => {
   return (
     <div
       ref={panelRef}
-      className="absolute right-0 top-full mt-2 w-96 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-slate-100 dark:border-gray-700 z-50 overflow-hidden"
+      className="absolute right-0 top-full mt-2 w-[calc(100vw-2rem)] sm:w-96 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-slate-100 dark:border-gray-700 z-50 overflow-hidden"
       style={{ maxHeight: '520px', display: 'flex', flexDirection: 'column', animation: 'fadeSlideDown 220ms cubic-bezier(0.22,1,0.36,1) both' }}
     >
       <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 dark:border-gray-700">
@@ -438,8 +438,14 @@ const Sidebar = ({
       </div>
 
       <button
-        onClick={() => setOpen((o) => !o)}
-        title={open ? t('sidebar.collapse') : t('sidebar.expand')}
+        onClick={() => {
+          if (isMobile) {
+            setMobileMenuOpen(false);
+          } else {
+            setOpen((o) => !o);
+          }
+        }}
+        title={isMobile ? t('sidebar.collapse') : (open ? t('sidebar.collapse') : t('sidebar.expand'))}
         style={{
           background:     'transparent',
           border:         'none',
@@ -474,7 +480,10 @@ const Sidebar = ({
         return (
           <button
             key={id}
-            onClick={() => setView(id)}
+            onClick={() => {
+              setView(id);
+              if (isMobile) setMobileMenuOpen(false);
+            }}
             onMouseEnter={(e) => {
               if (!active) {
                 e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
@@ -778,23 +787,25 @@ isMobile, setMobileMenuOpen
   };
 
   return (
-    <header className="h-[72px] bg-[#0f1c2e] border-b border-[rgba(22,248,249,0.06)] z-40 flex-shrink-0">
-      <div className="flex items-center justify-between px-4 sm:px-8 h-full gap-2 sm:gap-4">
+    <header className="h-auto min-h-[56px] sm:h-[72px] bg-[#0f1c2e] border-b border-[rgba(22,248,249,0.06)] z-40 flex-shrink-0">
+      <div className="flex items-center justify-between px-3 sm:px-8 h-full py-2 sm:py-0 gap-2 sm:gap-4">
 
-        <div key={view} className="flex items-center gap-2 sm:gap-4 min-w-0 anim-topbar">
+        <div key={view} className="flex items-center gap-2 sm:gap-4 min-w-0 anim-topbar flex-shrink-0">
           {isMobile && (
-            <button onClick={() => setMobileMenuOpen(true)} className="p-1 text-white hover:bg-white/10 rounded-lg flex-shrink-0">
-              <Menu size={24} />
+            <button onClick={() => setMobileMenuOpen(true)} className="p-1.5 text-white hover:bg-white/10 rounded-lg flex-shrink-0">
+              <Menu size={22} />
             </button>
           )}
-          <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${meta.gradient} flex items-center justify-center shadow-lg shadow-[#16f8f9]/20 flex-shrink-0`}>
-            <ViewIcon size={20} className="text-black" strokeWidth={2.5} />
+          <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br ${meta.gradient} flex items-center justify-center shadow-lg shadow-[#16f8f9]/20 flex-shrink-0`}>
+            <ViewIcon size={isMobile ? 16 : 20} className="text-black" strokeWidth={2.5} />
           </div>
-          <div className="min-w-0">
-            <h1 className="text-1xl font-bold text-white truncate max-w-[110px] sm:max-w-none">
-              {t(`sidebar.${view}`)}
-            </h1>
-          </div>
+          {!isMobile && (
+            <div className="min-w-0">
+              <h1 className="text-1xl font-bold text-white truncate">
+                {t(`sidebar.${view}`)}
+              </h1>
+            </div>
+          )}
         </div>
 
         <div className="flex items-center gap-1 sm:gap-3">
@@ -825,7 +836,7 @@ isMobile, setMobileMenuOpen
             </div>
           )}
 
-          <div className="relative">
+          <div className="relative hidden sm:block">
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#94a3b8]" />
             <input
               type="text"
@@ -833,7 +844,7 @@ isMobile, setMobileMenuOpen
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Escape') setSearchQuery(''); }}
               placeholder={searchPlaceholder}
-              className="pl-9 pr-9 py-2 bg-[#1e293b] rounded-lg text-sm w-24 sm:w-40 md:w-56 focus:outline-none focus:ring-2 focus:ring-[#16f8f9]/50 focus:bg-[#0f172a] transition-all text-white placeholder:text-[#94a3b8]/60 border border-[#1e293b] focus:border-[#16f8f9]/30"
+              className="pl-9 pr-9 py-2 bg-[#1e293b] rounded-lg text-sm w-40 md:w-56 focus:outline-none focus:ring-2 focus:ring-[#16f8f9]/50 focus:bg-[#0f172a] transition-all text-white placeholder:text-[#94a3b8]/60 border border-[#1e293b] focus:border-[#16f8f9]/30"
             />
             {searchQuery && (
               <button
@@ -1367,7 +1378,7 @@ export default function App() {
           canViewSettings={canViewSettings} // 🔥 SE PASA EL PERMISO
         />
         <main className="flex-1 overflow-y-auto overflow-x-hidden relative main-scroll">
-          <div key={view} className="p-8 anim-view">
+          <div key={view} className="p-4 sm:p-6 lg:p-8 anim-view">
             {renderView()}
           </div>
         </main>

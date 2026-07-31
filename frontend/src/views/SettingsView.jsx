@@ -689,7 +689,7 @@ export const SettingsView = ({
                     </p>
 
                     {/* 3-panel grid */}
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
 
                       {/* Panel 1 — Roles */}
                       <div className="rounded-2xl border border-wellq-gray/10 dark:border-white/5 overflow-hidden">
@@ -1008,7 +1008,7 @@ export const SettingsView = ({
         )}
 
         {/* Appearance & Language */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {showAppearance && (
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-wellq-gray/20 dark:bg-wellq-dark dark:border-white/10">
             <div className="flex items-center gap-3 mb-5">
@@ -1039,7 +1039,7 @@ export const SettingsView = ({
         </div>
 
         {/* Backend & DB & Sync Status */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
 
           {showBackend && (
           <div className="relative bg-white rounded-2xl p-6 shadow-sm border border-wellq-blue/20 dark:bg-wellq-dark dark:border-wellq-blue/20 overflow-hidden group">

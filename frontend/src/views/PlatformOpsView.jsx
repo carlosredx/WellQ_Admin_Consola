@@ -403,7 +403,7 @@ export const PlatformOpsView = ({ apiCosts, apiLatency, apiPose, apiServers, sea
       animate="show"
     >
       {/* ── Top 3 KPI Cards ── */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
 
         {/* Cost Card */}
         {showCard('cost') && (
@@ -510,7 +510,7 @@ export const PlatformOpsView = ({ apiCosts, apiLatency, apiPose, apiServers, sea
       </div>
 
       {/* ── Infra + App versions ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
         
         {/* Infrastructure Servers */}
         {showInfrastructure && (

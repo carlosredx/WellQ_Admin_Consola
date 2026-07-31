@@ -398,7 +398,7 @@ const BusinessHealthTab = ({
   return (
     <motion.div variants={containerVariants} initial="hidden" animate="show" className="space-y-6">
       {visibleKpiCards.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {visibleKpiCards.map((card) => (
             <motion.div key={card.title} variants={itemVariants} className="h-full">
               <KPICard {...card} loading={loading} />
@@ -408,7 +408,7 @@ const BusinessHealthTab = ({
       )}
 
       {visibleCharts.length > 0 && (
-        <div className={`grid grid-cols-1 ${visibleCharts.length > 1 ? 'lg:grid-cols-2' : ''} gap-6`}>
+        <div className={`grid grid-cols-1 ${visibleCharts.length > 1 ? 'lg:grid-cols-2' : ''} gap-4 lg:gap-6`}>
           {visibleCharts.map((chart) => (
             <motion.div key={chart.id} variants={itemVariants}>
               {chart.render}
@@ -675,7 +675,7 @@ const ServerDetailPanel = ({ server, onClose }) => {
           {/* Resource summary cards */}
           <div>
             <p className="text-[10px] font-bold text-wellq-gray uppercase tracking-wider mb-3">{t('overview.serverDrawer.resourceSummary')}</p>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {metrics.map(({ label, short, value, warn, crit }) => {
                 const cardMeta =
                   value >= crit
@@ -833,7 +833,7 @@ const OperationalStatusTab = ({
     <motion.div variants={containerVariants} initial="hidden" animate="show" className="space-y-6">
       
       {/* ── Top 4 KPI Cards ── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         {visibleCards.map(({ label, value, icon: Icon, metaColor, sub }, i) => {
           const styles = getColorClasses(metaColor);
           return (
@@ -869,7 +869,7 @@ const OperationalStatusTab = ({
             <p className="text-xs font-medium text-wellq-gray mt-1">{t('overview.serverInfrastructureSub')}</p>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
           {visibleServers.map((server, i) => {
             const meta = SERVER_STATUS_META[server.status] ?? SERVER_STATUS_META.idle;
             return (
@@ -930,7 +930,7 @@ const OperationalStatusTab = ({
         </div>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
         <motion.div variants={itemVariants} className="bg-white dark:bg-wellq-dark rounded-2xl p-6 shadow-sm border border-wellq-gray/20 dark:border-white/5 flex flex-col">
           <div className="mb-6 flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-wellq-dark/5 dark:bg-white/5 flex items-center justify-center ring-1 ring-wellq-gray/20 dark:ring-white/10 shadow-sm">

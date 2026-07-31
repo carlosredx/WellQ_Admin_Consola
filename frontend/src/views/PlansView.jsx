@@ -621,7 +621,7 @@ const ArchivedPlansView = ({ plans, loading, error, onReload, onRestore, searchQ
       </div>
 
       {/* KPI bar */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
         {/* Total archivados */}
         <div className="bg-white dark:bg-wellq-dark rounded-2xl p-5 border border-wellq-gray/15 dark:border-white/[0.06]">
           <div className="text-[10px] font-bold uppercase tracking-wider text-wellq-gray mb-2">
@@ -681,7 +681,7 @@ const ArchivedPlansView = ({ plans, loading, error, onReload, onRestore, searchQ
           variants={containerVariants}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-5"
         >
           {filteredPlans.map((plan) => (
             <ArchivedPlanCard key={plan.id} plan={plan} onRestore={onRestore} />
@@ -774,7 +774,7 @@ const PlanBuilder = ({ plan, features, onSave, onCancel, saving, searchQuery = '
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
         {/* Sidebar catálogo */}
         <aside className="lg:col-span-4 bg-white dark:bg-wellq-dark rounded-2xl shadow-sm border border-wellq-gray/20 dark:border-white/10 flex flex-col" style={{ minHeight: '600px' }}>
           <div className="p-5 border-b border-wellq-gray/10 dark:border-white/5 bg-wellq-gray/3 dark:bg-white/[0.02]">
@@ -901,7 +901,7 @@ const PlanBuilder = ({ plan, features, onSave, onCancel, saving, searchQuery = '
               </div>
               {t('plans.pricing')}
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
               {[
                 { label: t('plans.setupPrice'), key: 'setupPrice', suffix: '', prefix: '$', hint: t('plans.setupPriceHint') },
                 { label: t('plans.monthlyPrice'), key: 'monthlyPrice', suffix: '/mo', prefix: '$', hint: t('plans.monthlyPriceHint') },
@@ -936,7 +936,7 @@ const PlanBuilder = ({ plan, features, onSave, onCancel, saving, searchQuery = '
             </div>
 
             {/* Financial Projection Cards */}
-            <div className="mt-6 pt-6 border-t border-wellq-gray/10 dark:border-white/5 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="mt-6 pt-6 border-t border-wellq-gray/10 dark:border-white/5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
               <div className="relative bg-gradient-to-br from-wellq-cyan/5 to-wellq-blue/5 dark:from-wellq-cyan/10 dark:to-wellq-blue/10 rounded-2xl p-5 border border-wellq-cyan/20 overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-wellq-cyan/10 to-transparent opacity-50" />
                 <div className="text-[10px] font-bold uppercase tracking-wider text-wellq-cyan/70 dark:text-wellq-cyan mb-1">{t('plans.firstYearRevenue')}</div>
@@ -998,7 +998,7 @@ const PlansLibrary = ({ plans, features, onEdit, onDuplicate, onArchive, onDelet
         </div>
       )}
 
-      <motion.div variants={containerVariants} initial="hidden" animate="show" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <motion.div variants={containerVariants} initial="hidden" animate="show" className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
         {filteredPlans.map((plan) => {
           const tagColor = PLAN_TAG_COLORS[plan.tagColor] || PLAN_TAG_COLORS.slate;
           return (

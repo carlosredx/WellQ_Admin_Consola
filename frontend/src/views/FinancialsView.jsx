@@ -129,7 +129,7 @@ export const FinancialsView = ({ mrrData, churnRegions, loading = false, searchQ
       animate="show"
     >
       {/* ── KPIs Superiores ── */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         
         {/* Total MRR */}
         {showKpi('totalMrr') && (
@@ -189,7 +189,7 @@ export const FinancialsView = ({ mrrData, churnRegions, loading = false, searchQ
       </div>
 
       {/* ── Gráficos ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
         {showMrrChart && <MRRChart />}
         {showChurnHeatmap && <ChurnHeatmap apiRegions={churnRegions} onRegionClick={setSelectedRegion} />}
       </div>
