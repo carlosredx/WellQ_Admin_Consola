@@ -833,7 +833,7 @@ isMobile, setMobileMenuOpen
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Escape') setSearchQuery(''); }}
               placeholder={searchPlaceholder}
-              className="pl-9 pr-9 py-2 bg-[#1e293b] rounded-lg text-sm w-32 sm:w-40 md:w-56 focus:outline-none focus:ring-2 focus:ring-[#16f8f9]/50 focus:bg-[#0f172a] transition-all text-white placeholder:text-[#94a3b8]/60 border border-[#1e293b] focus:border-[#16f8f9]/30"
+              className="pl-9 pr-9 py-2 bg-[#1e293b] rounded-lg text-sm w-24 sm:w-40 md:w-56 focus:outline-none focus:ring-2 focus:ring-[#16f8f9]/50 focus:bg-[#0f172a] transition-all text-white placeholder:text-[#94a3b8]/60 border border-[#1e293b] focus:border-[#16f8f9]/30"
             />
             {searchQuery && (
               <button
@@ -1344,6 +1344,8 @@ export default function App() {
 
       <div className="flex-1 flex flex-col min-w-0 relative bg-slate-50 overflow-hidden dark:bg-[#070b12]">
         <Topbar
+          isMobile={isMobile}
+          setMobileMenuOpen={setMobileMenuOpen}
           view={view}
           dateRange={dateRange}
           setDateRange={setDateRange}
