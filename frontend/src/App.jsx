@@ -791,7 +791,7 @@ isMobile, setMobileMenuOpen
             <ViewIcon size={20} className="text-black" strokeWidth={2.5} />
           </div>
           <div className="min-w-0">
-            <h1 className="text-1xl font-bold text-white whitespace-nowrap">
+            <h1 className="text-1xl font-bold text-white truncate max-w-[110px] sm:max-w-none">
               {t(`sidebar.${view}`)}
             </h1>
           </div>
@@ -1323,7 +1323,7 @@ export default function App() {
         isMobile={isMobile}
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
-        open={open}
+        open={isMobile ? true : open}
         setOpen={setOpen}
         view={view}
         setView={setView}
