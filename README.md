@@ -1,21 +1,26 @@
-# Guia de inicio rapido
+# 🏥 WellQ — Admin Consola
 
-Bienvenido al proyecto. Sigue este paso a paso para instalar todo lo necesario y levantar la aplicacion correctamente. El proyecto se divide en dos partes:
+## 📖 Explicación del proyecto
 
-- Backend: API en FastAPI.
-- Frontend: interfaz visual en React/Vite.
+Panel de administración web para la gestión integral de una aplicación, permitiendo la administración de usuarios, roles y permisos mediante un sistema de acceso diferenciado. Implementa autenticación segura con JWT, recuperación de cuentas, gestión de tickets y operaciones internas mediante una API REST. 
 
-Para una instalacion local desde cero, revisar tambien:
+### 🛠️ Tecnologías Utilizadas
+- Python • FastAPI • React • Vite • PostgreSQL • SQLModel • JWT • bcrypt • TailwindCSS
 
-```txt
-INSTALL.md
-```
+## ☁️ Arquitectura y Despliegue
 
-Ese archivo explica que `.env` se necesitan y como se entregan las credenciales privadas.
+La solución fue desplegada bajo una arquitectura cloud distribuida, separando la infraestructura de la siguiente manera:
+- **Frontend**: Desplegado en **Vercel**.
+- **Backend**: API alojada en **Google Cloud Run**.
+- **Base de Datos**: PostgreSQL alojada en **Neon**.
 
-## 1. Configuracion del backend
+## 📥 Instalación y Pruebas Locales
 
-Abre una terminal en la raiz del proyecto.
+Para levantar la aplicación correctamente de forma local, sigue este paso a paso. Para una instalación local desde cero, revisar también el archivo `INSTALL.md`, el cual explica qué `.env` se necesitan y cómo se entregan las credenciales privadas.
+
+### 1. Configuración del backend
+
+Abre una terminal en la raíz del proyecto.
 
 ```bash
 # 1. Entramos a la carpeta del backend
@@ -36,24 +41,18 @@ pip install -r requirements.txt
 # 6. Cargamos datos iniciales a la base de datos
 python seed.py
 
-# 7. Eliminamos duplicados historicos si corresponde
+# 7. Eliminamos duplicados históricos si corresponde
 python cleanup_duplicates.py
 
 # 8. Encendemos el backend local
 uvicorn app.main:app --reload --port 8000
 ```
 
-Antes de ejecutar el backend local, debe existir:
+*Antes de ejecutar el backend local, debe existir `backend/.env`. Ese archivo no se sube a Git y se entrega de manera interna.*
 
-```txt
-backend/.env
-```
+### 2. Configuración del frontend
 
-Ese archivo no se sube a Git. Se entrega por Drive privado, WhatsApp empresarial autorizado o canal interno definido por la empresa.
-
-## 2. Configuracion del frontend
-
-Abre una segunda terminal en la raiz del proyecto.
+Abre una segunda terminal en la raíz del proyecto.
 
 ```bash
 # 1. Entramos a la carpeta del frontend
@@ -66,42 +65,21 @@ npm install
 npm run dev
 ```
 
-Antes de ejecutar el frontend, debe existir:
-
-```txt
-frontend/.env
-```
-
-Para backend local:
-
-```env
-VITE_API_URL=http://localhost:8000
-```
-
-Para backend desplegado en Google Cloud Run:
-
-```env
-VITE_API_URL=https://URL-DEL-BACKEND-EN-GOOGLE-CLOUD-RUN
-```
-
-## 3. Configuracion de GitHub
+## 🐙 Comandos para subir cambios a Git
 
 Usar estos comandos cuando quieras subir cambios al repositorio.
-
 Importante: no subir archivos privados como `.env`.
 
 ```bash
-# 1. Revisa que archivos cambiaron
+# 1. Revisa qué archivos cambiaron
 git status
 
-# 2. Empaqueta los archivos modificados o creados que si deben subirse
+# 2. Empaqueta los archivos modificados o creados que sí deben subirse
 git add .
 
-# 3. Crea el commit
+# 3. Crea el commit con un mensaje descriptivo
 git commit -m "Explica brevemente que cambiaste"
 
 # 4. Sube los cambios al repositorio
 git push
 ```
-
-
